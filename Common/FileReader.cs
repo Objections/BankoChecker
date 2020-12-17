@@ -15,7 +15,7 @@ namespace BankoChecker
         {
             var fileTypeGroups = Directory.GetFiles(numberFilesDirectory).GroupBy(file => Path.GetExtension(file));
             HashSet<int> numbersFromFiles = new HashSet<int>();
-            HashSet<int> numbersFromMails = new HashSet<int>(); ;
+            HashSet<int> numbersFromMails = new HashSet<int>();
 
             foreach (var fileTypeGroup in fileTypeGroups)
             {

@@ -25,6 +25,11 @@ namespace BankoChecker
 
         public static void PrintNumbersBase(int numberBase, HashSet<int> numbers)
         {
+            AnsiConsole.Render(CreateTableNumbersBase(numberBase, numbers));
+        }
+
+        public static Panel CreateTableNumbersBase(int numberBase, HashSet<int> numbers)
+        {
             int[] ceilings = Enumerable.Range(1, 90 / numberBase).Select(number => number * numberBase).ToArray();
 
             List<List<string>> numberLines = GetNumbersValuesPivot(numbers, ceilings);
@@ -36,7 +41,7 @@ namespace BankoChecker
                 table.AddRow(numberLine.ToArray());
             }
 
-            AnsiConsole.Render(new Panel(table).Header("Bingo Lotto"));
+            return new Panel(table).Header("Numbers Drawn");
         }
 
         private static List<List<string>> GetNumbersValuesPivot(HashSet<int> numbers, int[] ceilings)

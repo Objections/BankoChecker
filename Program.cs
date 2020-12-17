@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Spectre.Console;
+using Spectre.Console.Rendering;
+using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -26,15 +28,20 @@ namespace BankoChecker
             HashSet<int> numbers = FileReader.GetNumbers(numberFilesPath);
             List<Card> cards = FileReader.GetCards(cardsFilesPath, numbers);
 
-            Console.WriteLine();
-            Utilities.PrintNumbersBase10(numbers);
+            var cardHolder = new CardRack(cards);
 
-            foreach (var card in cards)
+            cardHolder.CheckBankoOnCards();
+
+            var numberTable = new Table().AddColumn("");
+            numberTable.AddRow(Utilities.CreateTableNumbersBase(10, numbers));
+
+            List<IRenderable> tablesToRender = new List<IRenderable>
             {
-                Console.WriteLine();
-                card.CheckBanko();
-                card.PrintCard();
-            }
+                cardHolder.CardTable,
+                numberTable.Border(TableBorder.None)
+            };
+
+            AnsiConsole.Render(new Columns(tablesToRender).Collapse());
 
             Console.WriteLine("Press any key to exit.");
             Console.ReadKey();

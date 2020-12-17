@@ -21,7 +21,7 @@ namespace BankoChecker
             CreateTable();
         }
 
-        private Panel Table { get; set; }
+        public Panel Table { get; set; }
         private string FileName { get; set; }
         private List<CardLine> CardLines { get; set; } = new List<CardLine>();
         private bool FullCard { get; set; }
@@ -50,6 +50,7 @@ namespace BankoChecker
         {
             if (FullCard)
             {
+                Console.WriteLine();
                 Console.WriteLine($"Full card - on {Path.GetFileNameWithoutExtension(FileName)} - Banko ");
                 Console.WriteLine($"Numbers where: {string.Join(", ", Numbers)}");
             }
@@ -60,6 +61,7 @@ namespace BankoChecker
                     var cardLine = CardLines[i];
                     if (cardLine.Bingo)
                     {
+                        Console.WriteLine();
                         Console.WriteLine($"Bingo - on {Path.GetFileNameWithoutExtension(FileName)} line {i + 1}");
                         Console.WriteLine($"Numbers where: {string.Join(", ", cardLine.Numbers)}");
                     }
