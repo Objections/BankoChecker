@@ -31,7 +31,7 @@ namespace BankoChecker
                 var range = numberRanges.FirstOrDefault(range => range.Key == ceiling);
                 string number = range?.First().Key.ToString() ?? "";
                 bool color = range?.First().Value ?? false;
-                values.Add(Utilities.GetNumberString(number, color));
+                values.Add(Utilities.GetNumberString(number, color, Bingo ? "strikethrough red" : "green"));
             }
             return values;
         }

@@ -62,8 +62,7 @@ namespace BankoChecker
                     if (cardLine.Bingo)
                     {
                         Console.WriteLine();
-                        Console.WriteLine($"Bingo - on {Path.GetFileNameWithoutExtension(FileName)} line {i + 1}");
-                        Console.WriteLine($"Numbers where: {string.Join(", ", cardLine.Numbers)}");
+                        Console.WriteLine($"Bingo - on {Path.GetFileNameWithoutExtension(FileName)} line {i + 1}. Numbers where: {string.Join(", ", cardLine.Numbers.Keys)}");
                     }
                 }
             }

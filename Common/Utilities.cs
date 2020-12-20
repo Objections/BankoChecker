@@ -65,11 +65,11 @@ namespace BankoChecker
             return numberLines;
         }
 
-        public static string GetNumberString(string number, bool colorNumber)
+        public static string GetNumberString(string number, bool colorNumber, string numberColor = "green")
         {
             return string.Format(
                         "{0}{1,2}{2}",
-                        colorNumber ? "[green]" : "",
+                        colorNumber ? $"[{numberColor}]" : "",
                         number,
                         colorNumber ? "[/]" : "");
         }
